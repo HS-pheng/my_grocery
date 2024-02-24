@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/hongsrengpheng/Document-Local/my_grocery/linux",
+      "program": "/Users/hongsrengpheng/Document-Local/my_grocery/linux/build/Debug/outDebug"
+    }
+  ]
+}
