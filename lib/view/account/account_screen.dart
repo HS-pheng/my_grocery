@@ -15,27 +15,32 @@ class AccountScreen extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         children: [
           const SizedBox(height: 20),
-          Obx(()=> Row(
-            children: [
-              const CircleAvatar(
-                backgroundColor: Colors.grey,
-                radius: 36,
-                child: CircleAvatar(
-                  radius: 35,
-                  backgroundImage: AssetImage("assets/user_image.png"),
+          Obx(
+            () => Row(
+              children: [
+                const CircleAvatar(
+                  backgroundColor: Colors.grey,
+                  radius: 36,
+                  child: CircleAvatar(
+                    radius: 35,
+                    backgroundImage: NetworkImage(
+                        "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"), // Replace with your image URL
+                  ),
                 ),
-              ),
-              const SizedBox(width: 10),
-              Column(
-                children:  [
-                  Text(
-                    authController.user.value?.fullName??"Sign in your account",
-                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                  )
-                ],
-              )
-            ],
-          ),),
+                const SizedBox(width: 10),
+                Column(
+                  children: [
+                    Text(
+                      authController.user.value?.fullName ??
+                          "Sign in your account",
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.w500),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
           const SizedBox(height: 50),
           buildAccountCard(
               title: "Profile Info",
@@ -49,17 +54,18 @@ class AccountScreen extends StatelessWidget {
           buildAccountCard(title: "Settings", onClick: () {}),
           buildAccountCard(title: "About Us", onClick: () {}),
           buildAccountCard(title: "Terms of Service", onClick: () {}),
-          Obx(() => buildAccountCard(title: authController.user.value==null?"Sign In":
-              "Sign Out", onClick: () {
-            if(authController.user.value!=null){
-              authController.signOut();
-            } else {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SignInScreen()));
-            }
-          }))
+          Obx(() => buildAccountCard(
+              title: authController.user.value == null ? "Sign In" : "Sign Out",
+              onClick: () {
+                if (authController.user.value != null) {
+                  authController.signOut();
+                } else {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignInScreen()));
+                }
+              }))
         ],
       ),
     );
