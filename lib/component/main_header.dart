@@ -1,6 +1,5 @@
 // ignore: library_prefixes
 import 'package:badges/badges.dart' as Badge;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MainHeader extends StatelessWidget {
